@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColoriFy</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-paint-brush"></i>ColoriFy</h1>
+            <p>Transform your black & white photos into vibrant colored images</p>
+        </header>
+
+        <main>
+            <div class="workflow-container">
+                <div class="workflow-steps">
+                    <div class="step active" id="step1">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Upload Image</div>
+                    </div>
+                    <div class="step" id="step2">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Colorize</div>
+                    </div>
+                    <div class="step" id="step3">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Enhance</div>
+                    </div>
+                    <div class="step" id="step4">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Share</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <!-- Step 1: Upload -->
+                <div class="step-content active" id="step1-content">
+                    <div class="upload-container" id="upload-container">
+                        <div class="upload-area" id="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your image here or</p>
+                            <label for="file-input" class="upload-btn">Browse Files</label>
+                            <input type="file" id="file-input" accept="image/*" hidden>
+                        </div>
+                        <div class="image-preview-container" id="image-preview-container" style="display: none;">
+                            <img id="preview-image" src="/placeholder.svg" alt="Preview">
+                            <button class="remove-btn" id="remove-image"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="upload-options">
+                        <div class="option-group">
+                            <label for="model">Model Type:</label>
+                            <div class="select-wrapper">
+                                <select id="model" name="model">
+                                    <option value="artistic">Artistic</option>
+                                    <option value="stable">Stable</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label for="render_factor">Render Factor:</label>
+                            <div class="range-with-value">
+                                <input type="range" id="render_factor" name="render_factor" min="10" max="50" value="35">
+                                <span id="render-factor-value">35</span>
+                            </div>
+                        </div>
+                        <button id="colorize-btn" class="primary-btn" disabled>
+                            <i class="fas fa-magic"></i> Colorize Image
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Colorize (Loading) -->
+                <div class="step-content" id="step2-content">
+                    <div class="processing-container">
+                        <div class="loader"></div>
+                        <h3>Colorizing your image...</h3>
+                        <p>This may take a few moments depending on the image size and complexity.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3: Enhance -->
+                <div class="step-content" id="step3-content">
+                    <div class="result-container">
+                        <div class="image-comparison">
+                            <div class="original-image">
+                                <h4>Original</h4>
+                                <div class="image-wrapper">
+                                    <img id="original-image" src="/placeholder.svg" alt="Original Image">
+                                </div>
+                            </div>
+                            <div class="colorized-image">
+                                <h4>Colorized</h4>
+                                <div class="image-wrapper">
+                                    <img id="colorized-image" src="/placeholder.svg" alt="Colorized Image">
+                                    <canvas id="enhancement-canvas" width="500" height="500"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enhancement-controls">
+                            <h3>Image Enhancements</h3>
+                            <div class="slider-group">
+                                <label for="brightness">Brightness:</label>
+                                <div class="range-with-value">
+                                    <input type="range" id="brightness" min="0.5" max="2.0" step="0.1" value="1.0">
+                                    <span id="brightness-value">1.0</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="contrast">Contrast:</label>
+                                <div class="range-with-value">
+                                    <input type="range" id="contrast" min="0.5" max="2.0" step="0.1" value="1.0">
+                                    <span id="contrast-value">1.0</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="sharpness">Sharpness:</label>
+                                <div class="range-with-value">
+                                    <input type="range" id="sharpness" min="0" max="1.0" step="0.1" value="0">
+                                    <span id="sharpness-value">0</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="saturation">Saturation:</label>
+                                <div class="range-with-value">
+                                    <input type="range" id="saturation" min="0.5" max="2.0" step="0.1" value="1.0">
+                                    <span id="saturation-value">1.0</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="vibrance">Vibrance:</label>
+                                <div class="range-with-value">
+                                    <input type="range" id="vibrance" min="0" max="1.0" step="0.1" value="0">
+                                    <span id="vibrance-value">0</span>
+                                </div>
+                            </div>
+                            <div class="enhancement-buttons">
+                                <button id="reset-enhancements" class="secondary-btn">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                                <button id="apply-enhancements" class="primary-btn">
+                                    <i class="fas fa-check"></i> Apply & Continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Share -->
+                <div class="step-content" id="step4-content">
+                    <div class="share-container">
+                        <div class="final-image">
+                            <img id="final-image" src="/placeholder.svg" alt="Final Image">
+                        </div>
+                        <div class="share-options">
+                            <h3>Your image is ready!</h3>
+                            <p>Download your colorized image or share it on social media.</p>
+                            <div class="action-buttons">
+                                <a id="download-btn" class="primary-btn" download="colorized-image.jpg">
+                                    <i class="fas fa-download"></i> Download Image
+                                </a>
+                                <div class="social-share">
+                                    <button class="social-btn facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button class="social-btn twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="social-btn pinterest">
+                                        <i class="fab fa-pinterest-p"></i>
+                                    </button>
+                                    <button class="social-btn email">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button id="start-over" class="secondary-btn">
+                                <i class="fas fa-redo"></i> Start Over
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 ColoriFy</p>
+        </footer>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
+
