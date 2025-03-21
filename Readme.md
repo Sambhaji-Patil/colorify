@@ -1,5 +1,3 @@
-Here's a professional `README.md` for your project:  
-
 ---
 
 # 📸 AI-Based Image Colorizer Tool
