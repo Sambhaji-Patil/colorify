@@ -32,7 +32,6 @@ Watch the tool in action: [UI Demo Video](https://drive.google.com/file/d/1tP5CZ
 │   ├── static
 │   ├── templates
 │   ├── uploads
-│   └── try.ipynb (For the optional TensorFlow model)
 ```
 
 ---
@@ -51,9 +50,9 @@ DeOldify/models/
 ```
 
 ### 3. Modify Path in `app.py`  
-In your `app.py`, update the `sys.path.append` line to point to the `DeOldify` folder location.  
+In your `app.py`, update the `sys.path.append` line to point to the `DeOldify` folder location,change this to your path.  
 ```python
-sys.path.append('C:/Users/dell/Desktop/Colorizer_rapsody/DeOldify')
+sys.path.append('C:/Users/dell/Desktop/Colorizer/DeOldify')
 ```
 
 ### 4. Create Virtual Environment  
@@ -108,9 +107,4 @@ pip install tensorflow==2.10.0
 - Make sure your Python environment matches the version requirements mentioned.  
 - The `render_factor` should not exceed 35 to avoid heavy memory consumption.  
 
----
-
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.  
-
----
+--- 
