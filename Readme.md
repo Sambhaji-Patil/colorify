@@ -1,5 +1,5 @@
-<img src="enhancements.png" alt="Alt Text" width="500">
-<img src="output.png" alt="Alt Text" width="500">
+<img src="enhancements.png" alt="Alt Text" width="800">
+<img src="output.png" alt="Alt Text" width="800">
 
 ---
 
