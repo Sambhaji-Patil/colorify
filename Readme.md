@@ -1,9 +1,11 @@
 
+---
+
 # 📸 AI-Based Image Colorizer Tool
 
 This repository provides an AI-powered tool for colorizing black-and-white images. The project consists of two parts:  
-1. **DeOldify-Based Image Colorization (Main Project)** – Uses pretrained models from the DeOldify repository.  
-2. **TensorFlow-Based Image Colorization (Optional Project)** – A model trained on the CelebA dataset using TensorFlow.  
+1. **DeOldify-Based Image Colorization (Main Project)** – Uses pretrained models from the DeOldify repository. This model is **not fine-tuned on any specific dataset**.  
+2. **TensorFlow-Based Image Colorization (Optional Project)** – A model trained and **fine-tuned on the CelebA dataset** using TensorFlow.  
 
 ---
 
@@ -35,9 +37,9 @@ Watch the tool in action: [UI Demo Video](https://drive.google.com/file/d/1tP5CZ
 
 ---
 
-## 🚀 Installation and Setup (DeOldify-Based Image Colorization)
+## 🚀 Installation and Setup (DeOldify-Based Image Colorization - Main Project)
 ### 1. Clone Repositories  
-- Clone the original DeOldify repository from its official source [this link] (https://github.com/jantic/DeOldify.git).  
+- Clone the original DeOldify repository from its official source: [DeOldify Repo](https://github.com/jantic/DeOldify.git).  
 - Clone **this repository (Colorizer_UI)** separately and move its contents into the folder where you cloned **DeOldify**.  
 
 ### 2. Download Model Weights  
@@ -71,7 +73,7 @@ Access the app at the URL displayed in the terminal (usually `http://127.0.0.1:5
 
 ---
 
-## 💡 Using the App
+## 💡 Using the App (Main Project)
 1. **Upload a Black-and-White Photo.**  
 2. **Select Model Type:** Choose between Artistic or Stable models.  
 3. **Adjust Render Factor:** Don't go beyond 35 as higher values may consume more memory.  
@@ -79,14 +81,15 @@ Access the app at the URL displayed in the terminal (usually `http://127.0.0.1:5
 
 ---
 
-## 🌟 Optional: TensorFlow-Based Model (CelebA Dataset)
+## 🌟 Optional: TensorFlow-Based Model (CelebA Dataset - Fine-Tuned)
 This part of the project is trained separately on the CelebA dataset and can be run using the provided `try.ipynb` file.  
 
 ### Model Weights  
-Download the model weights from [this link](https://drive.google.com/file/d/1-dveBo2FyuHOcRJwEP7nBl0EWVYUleCL/view?usp=drive_link).  
+Download the model weights from [this link](https://drive.google.com/drive/folders/1IzMW89QmwGB8F5Bn8kCdni9GhM-VoN22?usp=sharing).  
 
-### Dataset
-CelebA: https://www.kaggle.com/datasets/sampat05/colors
+### Dataset  
+CelebA: [CelebA Dataset](https://www.kaggle.com/datasets/sampat05/colors)  
+
 ### Requirements  
 - Python: 3.10.16  
 - TensorFlow: 2.10.0  
@@ -98,7 +101,9 @@ pip install tensorflow==2.10.0
 
 ---
 
-## 📌 Note
+## 📌 Important Notes
+- **Main Project (DeOldify Model)**: This model is a general-purpose model **not fine-tuned on any specific dataset** but performs well on most images.  
+- **Optional Project (TensorFlow Model)**: This model is fine-tuned on the **CelebA dataset**, providing better results specifically for human faces.  
 - Ensure that the DeOldify repo and this repository are placed properly as described above.  
 - Make sure your Python environment matches the version requirements mentioned.  
 - The `render_factor` should not exceed 35 to avoid heavy memory consumption.  
@@ -109,4 +114,3 @@ pip install tensorflow==2.10.0
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.  
 
 ---
-
