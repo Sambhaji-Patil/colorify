@@ -1,4 +1,3 @@
----
 
 # 📸 AI-Based Image Colorizer Tool
 
