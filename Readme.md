@@ -88,6 +88,8 @@ This part of the project is trained separately on the CelebA dataset and can be 
 ### Model Weights  
 Download the model weights from [this link](https://drive.google.com/file/d/1-dveBo2FyuHOcRJwEP7nBl0EWVYUleCL/view?usp=drive_link).  
 
+### Dataset
+CelebA: https://www.kaggle.com/datasets/sampat05/colors
 ### Requirements  
 - Python: 3.10.16  
 - TensorFlow: 2.10.0  
