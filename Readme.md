@@ -1,9 +1,9 @@
-<img src="enhancements.png" alt="Alt Text" width="820" height="500">
-<img src="output.png" alt="Alt Text" width="820" height="500">
-
----
 
 # 📸 AI-Based Image Colorizer Tool
+---
+
+<img src="enhancements.png" alt="Alt Text" width="820" height="500">
+<img src="output.png" alt="Alt Text" width="820" height="500">
 
 This repository provides an AI-powered tool for colorizing black-and-white images. The project consists of two parts:  
 1. **DeOldify-Based Image Colorization (Main Project)** – Uses pretrained models from the DeOldify repository. This model is **not fine-tuned on any specific dataset**.  
